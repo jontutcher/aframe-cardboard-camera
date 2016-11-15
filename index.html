@@ -1,35 +1,30 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <title>A-Frame - Cardboard Camera Example</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.1.1/gh-fork-ribbon.min.css"/>
-    <style>
-      html {
-        background: #EF2D5E;
-        color: #FAFAFA;
-        font-family: monospace;
-        font-size: 20px;
-        padding: 10px 20px;
-      }
-      h1 {
-        font-weight: 300;
-      }
-      a {
-        color: #FAFAFA;
-        display: block;
-        padding: 15px 0;
-      }
-    </style>
+    <meta charset="utf-8">
+    <title>Cardboard Camera Example - Junun at the Troxy</title>
+    <meta name="description" content="Cardboard Camera Example - Junun at the Troxy">
+    <script src="lib/aframe.min.js"></script>
+    <script src="lib/aframe-stereo-component.min.js"></script>
   </head>
   <body>
-    <h1>A-Frame - Cardboard Camera Example</h1>
-    <h3>Examples</h3>
-    <a href="examples/library.html">Library</a>
-    <a href="examples/mountain.html">Mountain (with sound)</a>
+    <a-scene>
+      <!-- Paths to left and right images set here -->
+      <a-assets>
+        <img id="left" src="assets/junun-left.jpg">
+        <img id="right" src="assets/junun-right.jpg">
+      </a-assets>
 
-    <div class="github-fork-ribbon-wrapper right">
-      <div class="github-fork-ribbon" style="background: #3482AA">
-        <a href="https://github.com/bryik/aframe-cardboard-camera">Fork me on GitHub</a>
-      </div>
-    </div>
+      <!-- Camera -->
+      <a-entity camera look-controls position="0 0 0" stereocam="eye:left;"></a-entity>
+
+      <!-- Sound -->
+      <a-entity position="0 1 0" sound="src:assets/junun.mp4; autoplay: true; loop: true"></a-entity>
+
+      <!-- Sky sphere -->
+      <a-sky id="sky1" radius="5000" src="#left" stereo="eye:left"></a-sky>
+      <a-sky id="sky2" radius="5000" src="#right" stereo="eye:right"></a-sky>
+
+    </a-scene>
   </body>
 </html>
